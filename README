@@ -1,7 +1,17 @@
 
+Entities
+---------------------------------------------------
+Request the details for a particular Entity
+GET to /entities/<app_id>/<foreign_id>.json
+
+Path Values:
+app_id - as assigned from an admin of the application.
+foreign_id - identifier for the entity/object according to the requestor (you) i.e. your product ID.
+
+
 
 Reviews
-
+---------------------------------------------------
 Creating a new Review
 POST to /reviews.json
 
