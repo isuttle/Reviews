@@ -58,29 +58,27 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
-    params.each do |key, value|
-      puts "key: #{params[key]}"
-    end
-    
     # need to see if the entity already exists
     app_id = params[:review][:app_id]
     entity_id = params[:review][:entity_id]
     
-    @entity = Entity.find(entity_id)
-    if @entity.nil? || @entity.app_id != app_id then 
-      head(400) 
-      return 
-    end
-    
     @review = Review.new(params[:review])
+    if @review.entity.nil? || @review.entity.app_id != app_id 
+      #@review.errors.add(:entity_id, "entity is not valid.")
+      #head(400) 
+      #format.json { :status => 'error: entity does not exist' }
+      #return 
+    end
 
     respond_to do |format|
       if @review.save
         format.html { redirect_to(@review, :notice => 'Review was successfully created.') }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
+        format.json  { render :json => @review, :status => :created, :location => @review }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @review.errors, :status => :unprocessable_entity }
       end
     end
   end
