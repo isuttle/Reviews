@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  app_id: 1
+  enity_id: 1
+  user_ref: MyString
+  user_name: MyString
+  title: MyString
+  body: MyText
+  score: 1.5
+  helpful_count: 1
+
+two:
+  app_id: 1
+  enity_id: 1
+  user_ref: MyString
+  user_name: MyString
+  title: MyString
+  body: MyText
+  score: 1.5
+  helpful_count: 1

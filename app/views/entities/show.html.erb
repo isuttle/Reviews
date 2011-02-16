@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App:</b>
+  <%= @entity.app_id %>
+</p>
+
+<p>
+  <b>Foreign:</b>
+  <%= @entity.foreign_id %>
+</p>
+
+<p>
+  <b>Foreign url:</b>
+  <%= @entity.foreign_url %>
+</p>
+
+<p>
+  <b>Avg Score:</b>
+  <%= @entity.avg_score %>
+</p>
+
+<%= link_to 'Edit', edit_entity_path(@entity) %> |
+<%= link_to 'Back', entities_path %>

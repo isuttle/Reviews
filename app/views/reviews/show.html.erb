@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App:</b>
+  <%= @review.app_id %>
+</p>
+
+<p>
+  <b>Entity:</b>
+  <%= @review.entity_id %>
+</p>
+
+<p>
+  <b>User ref:</b>
+  <%= @review.user_ref %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @review.user_name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @review.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @review.body %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @review.score %>
+</p>
+
+<p>
+  <b>Helpful count:</b>
+  <%= @review.helpful_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

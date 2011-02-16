@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Review:</b>
+  <%= @review_vote.review_id %>
+</p>
+
+<p>
+  <b>User ref:</b>
+  <%= @review_vote.user_ref %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @review_vote.user_name %>
+</p>
+
+<p>
+  <b>Helpful:</b>
+  <%= @review_vote.helpful %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_vote_path(@review_vote) %> |
+<%= link_to 'Back', review_votes_path %>

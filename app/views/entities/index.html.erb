@@ -1,0 +1,31 @@
+<h1>Listing entities</h1>
+
+<table>
+  <tr>
+    <th>App</th>
+    <th>Foreign</th>
+    <th>Foreign URL</th>
+    <th>Average Score</th>
+    <th>Review Count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entities.each do |entity| %>
+  <tr>
+    <td><%= entity.app_id %></td>
+    <td><%= entity.foreign_id %></td>
+    <td><%= entity.foreign_url %></td>
+    <td><%= entity.avg_score %></td>
+    <td><%= entity.review_count %></td>
+    <td><%= link_to 'Show', entity %></td>
+    <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
+    <td><%= link_to 'Destroy', entity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Entity', new_entity_path %>

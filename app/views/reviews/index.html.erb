@@ -1,0 +1,17 @@
+<h1>Listing reviews</h1>
+
+<% @reviews.each do |review| %>
+	<div style="padding-bottom: 10px">
+		<%= link_to review.title, review %> <br />
+		product: <%= review.entity.name %><br />
+		app: <%= review.app.name %> <br />
+		author: <%= review.user_name %> (<%= review.user_ref %>) <br />
+		score: <%= review.score %> <br />
+		<%= review.helpful_score %> of <%= review.helpful_count %> users found this helpful <br />
+		<%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Destroy', review, :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+<% end %>
+
+<br />
+
+<%= link_to 'New Review', new_review_path %>

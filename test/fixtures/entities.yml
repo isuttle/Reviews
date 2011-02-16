@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  app_id: 1
+  foreign_id: MyString
+  foreign_url: MyString
+
+two:
+  app_id: 1
+  foreign_id: MyString
+  foreign_url: MyString

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App:</b>
+  <%= @review_type.app_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @review_type.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_type_path(@review_type) %> |
+<%= link_to 'Back', review_types_path %>
