@@ -8,6 +8,21 @@ Path Values:
 app_id - as assigned from an admin of the application.
 foreign_id - identifier for the entity/object according to the requestor (you) i.e. your product ID.
 
+JSON Response:
+{
+"entity":
+	{
+	"app_id":1,
+	"avg_score":3.75,
+	"created_at":"2011-02-15T22:29:08Z",
+	"foreign_id":"123abc",
+	"foreign_url":"http://www.google.com",
+	"id":1,
+	"name":"Google",
+	"review_count":6,
+	"updated_at":"2011-02-16T20:07:39Z"
+	}
+}
 
 
 Reviews
