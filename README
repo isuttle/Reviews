@@ -14,9 +14,11 @@ review[title] - optional. title of the review.
 review[user_name] - optional. if not supplied will be noted as "anonymous".
 review[user_ref] - optional. if not supplied will be noted as 0.
 
-Output Response:
-{"review":
-	{"app_id":1,
+JSON Response:
+{
+"review":
+	{
+	"app_id":1,
 	"body":"hello world",
 	"created_at":"2011-02-16T20:07:39Z",
 	"entity_id":1,
@@ -30,3 +32,40 @@ Output Response:
 	"user_ref":"1"
 	}
 }
+
+
+
+Requesting a list of Reviews for a particular Entity
+GET to /reviews/<app_id>/<foreign_id>.json
+
+Path Values:
+app_id - as assigned from an admin of the application.
+foreign_id - identifier for the entity/object according to the requestor (you) i.e. your product ID.
+
+JSON Response (array of "review"):
+[
+	{
+	"review":
+		{
+		"app_id":1,
+		"body":"Seriously, check it out.  It's amazing!!",
+		"created_at":"2011-02-15T22:30:08Z",
+		"entity_id":1,
+		"helpful_count":2,
+		"helpful_score":1,
+		"id":1,
+		"score":5.0,
+		"title":"This thing is the shiz!",
+		"updated_at":"2011-02-16T01:21:31Z",
+		"user_name":"Ian Suttle",
+		"user_ref":"1"
+		}
+	}
+	{
+	"review":
+		{
+		"app_id":1
+		...
+		}
+	}
+]

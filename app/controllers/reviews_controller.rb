@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     # TODO: Handle nil entity better
     return if @entity.nil?
     
-    @reviews = Review.find_by_app_id_and_entity_id(params[:app_id], @entity.id)
+    @reviews = Review.find_all_by_app_id_and_entity_id(params[:app_id], @entity.id)
 
     respond_to do |format|
       format.html # index.html.erb
