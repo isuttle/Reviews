@@ -67,6 +67,17 @@ Path Values:
 app_id - as assigned from an admin of the application.
 foreign_id - identifier for the entity/object according to the requestor (you) i.e. your product ID.
 
+Optional Querystring Params:
+order_by - allows for sorting of records. 
+	A value of "helpful" will result in showing reviews that have the most "thumbs up" votes, in descending order. If a tie exists, sort is next done on the score in descending order.
+	A value of "recent" will result in showing reviews in order of most recent update date, in descending order.
+example: /reviews.json?order_by=helpful
+
+count - limits the number of records to return.  default value is 20.  max value is 100.
+example: /reviews.json?count=25
+
+page - returns records starting at the page specified. for example, if count = 10 and page = 2, return would be 11 - 20.
+
 JSON Response (array of "review"):
 [
 	{

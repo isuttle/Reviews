@@ -17,9 +17,40 @@ class ReviewsController < ApplicationController
     @entity = Entity.find_by_foreign_id(params[:foreign_id])
     
     # TODO: Handle nil entity better
-    return if @entity.nil?
+    if @entity.nil?
+      head(404)
+      return
+    end
     
-    @reviews = Review.find_all_by_app_id_and_entity_id(params[:app_id], @entity.id)
+    if params[:order_by] == "helpful"
+      order_by = "helpful_score DESC, helpful_count DESC"
+    elsif params[:order_by] == "recent"
+        order_by = "updated_at DESC"
+    else
+      order_by = "score DESC"
+    end
+    
+    if params[:count].nil?
+      limit = 20
+    elsif params[:count].to_i > 0 && params[:count].to_i < 100
+      limit = params[:count].to_i
+    else
+      limit = 20
+    end
+    
+    if params[:page].nil?
+      offset = 0
+    elsif params[:page].to_i > 0 && params[:page].to_i < 100
+      offset = params[:page].to_i * limit - limit
+    else
+      offset = 0
+    end
+    
+    @reviews = Review.find :all, 
+      :conditions => {:app_id => params[:app_id], :entity_id => @entity.id},
+      :order => order_by,
+      :limit => limit,
+      :offset => offset
 
     respond_to do |format|
       format.html # index.html.erb
