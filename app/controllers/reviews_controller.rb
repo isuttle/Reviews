@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.all
+    @reviews = Review.find(:all, :include => [:app, :entity])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     elsif params[:order_by] == "recent"
         order_by = "updated_at DESC"
     else
-      order_by = "score DESC"
+      order_by = "score DESC, helpful_score DESC"
     end
     
     if params[:count].nil?
@@ -48,6 +48,7 @@ class ReviewsController < ApplicationController
     
     @reviews = Review.find :all, 
       :conditions => {:app_id => params[:app_id], :entity_id => @entity.id},
+      :include => [:app, :entity],
       :order => order_by,
       :limit => limit,
       :offset => offset

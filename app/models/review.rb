@@ -50,9 +50,6 @@ t.timestamps
 
     def entity_must_exist
       if self.entity.nil?
-        # auto-create an entity
-        # Entity.create(:app_id => self.app_id, )
-        
         self.errors.add(:entity_id, "The specified entity does not exist.")
       end
     end
