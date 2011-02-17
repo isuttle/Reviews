@@ -17,7 +17,7 @@ class ReviewVote < ActiveRecord::Base
   before_save :ensure_default_values
   
   # validations
-  validates :helpful, :presence => true
+  #validates :helpful, :presence => true
   validates :review_id, :presence => true
   
 
