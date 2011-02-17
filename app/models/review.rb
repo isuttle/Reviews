@@ -19,14 +19,14 @@ t.timestamps
   belongs_to :review_type
   has_many :review_votes
   
-  # filters
+  # callbacks
   before_create :ensure_default_values
   before_save :ensure_default_values
   after_create :update_entity_scores
   
   # validations
-  validate :user_ref, :presence => true
-  validate :user_name, :presence => true
+  validates :user_ref, :presence => true
+  validates :user_name, :presence => true
   validates_numericality_of :score, :greater_than_or_equal_to => 0
   validates_numericality_of :score, :less_than_or_equal_to => 10
   validate :entity_must_exist
@@ -56,6 +56,7 @@ t.timestamps
     # updates the entity's score aggregate info
     def update_entity_scores
       return if self.entity.nil?
+      # TODO: wrap transaction around update to entity record
       self.entity.review_count = self.entity.review_count + 1
       self.entity.avg_score = (self.entity.avg_score + self.score) / 2
       self.entity.save!

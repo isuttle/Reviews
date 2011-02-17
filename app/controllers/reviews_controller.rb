@@ -53,7 +53,6 @@ class ReviewsController < ApplicationController
       :offset => offset
 
     respond_to do |format|
-      format.html # index.html.erb
       format.xml  { render :xml => @reviews }
       format.json  { render :json => @reviews }
     end
@@ -89,17 +88,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
-    # need to see if the entity already exists
-    app_id = params[:review][:app_id]
-    entity_id = params[:review][:entity_id]
-    
     @review = Review.new(params[:review])
-    if @review.entity.nil? || @review.entity.app_id != app_id 
-      #@review.errors.add(:entity_id, "entity is not valid.")
-      #head(400) 
-      #format.json { :status => 'error: entity does not exist' }
-      #return 
-    end
 
     respond_to do |format|
       if @review.save
