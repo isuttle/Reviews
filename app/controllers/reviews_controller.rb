@@ -89,6 +89,14 @@ class ReviewsController < ApplicationController
   # POST /reviews.xml
   def create
     @review = Review.new(params[:review])
+    
+    # auto-create the entity if it doesn't exist yet.
+    if @review.entity.nil?
+      e = Entity.find_or_create_by_app_id_and_foreign_id(:app_id => @review.app_id, :foreign_id => params[:foreign_id])
+      if !e.nil?
+        @review.entity_id = e.id
+      end
+    end
 
     respond_to do |format|
       if @review.save
