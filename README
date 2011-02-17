@@ -25,6 +25,33 @@ JSON Response:
 }
 
 
+Review Votes
+---------------------------------------------------
+Creating a new Review Vote
+POST to /review_votes.json
+
+Input Values:
+review_vote[helpful] - required. 0 for not helpful, 1 for helpful.
+review_vote[review_id] - required. ID of the review being voted on.
+review_vote[user_name] - optional. if not supplied will be noted as "anonymous".
+review_vote[user_ref] - optional. if not supplied will be noted as 0.
+
+JSON Response:
+{
+	"review_vote":
+	{
+		"created_at":"2011-02-17T03:44:21Z",
+		"helpful":true,
+		"id":5,
+		"review_id":1,
+		"updated_at":"2011-02-17T03:44:21Z",
+		"user_name":"",
+		"user_ref":""
+	}
+}
+
+
+
 Reviews
 ---------------------------------------------------
 Creating a new Review

@@ -23,6 +23,7 @@ t.timestamps
   before_create :ensure_default_values
   before_save :ensure_default_values
   after_create :update_entity_scores
+  # TODO: update also needs to update entity scores
   
   # validations
   validates :user_ref, :presence => true
@@ -60,7 +61,10 @@ t.timestamps
     def update_entity_scores
       return if self.entity.nil?
       # TODO: wrap transaction around update to entity record
-      self.entity.review_count = self.entity.review_count + 1
+      # only add to review_count if this is a new record (not just an update)
+      if self.new_record?
+        self.entity.review_count = self.entity.review_count + 1
+      end
       self.entity.avg_score = (self.entity.avg_score + self.score) / 2
       self.entity.save!
     end

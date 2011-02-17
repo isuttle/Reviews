@@ -46,9 +46,11 @@ class ReviewVotesController < ApplicationController
       if @review_vote.save
         format.html { redirect_to(@review_vote, :notice => 'Review vote was successfully created.') }
         format.xml  { render :xml => @review_vote, :status => :created, :location => @review_vote }
+        format.json  { render :json => @review_vote, :status => :created, :location => @review_vote }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @review_vote.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @review_vote.errors, :status => :unprocessable_entity }
       end
     end
   end
