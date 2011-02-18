@@ -23,6 +23,7 @@ t.timestamps
   before_create :ensure_default_values
   before_save :ensure_default_values
   after_create :update_entity_scores
+  after_destroy :update_entity_scores_after_destroy
   # TODO: update also needs to update entity scores
   
   # validations
@@ -63,6 +64,14 @@ t.timestamps
         self.entity.review_count = self.entity.review_count + 1
       end
       self.entity.avg_score = (self.entity.avg_score + self.score) / 2
+      self.entity.save!
+    end
+    
+    # updates the entity's score aggregate info to reflect a review being removed    
+    def update_entity_scores_after_destroy
+      puts "removing score #{self.score}"
+      self.entity.avg_score = (self.entity.avg_score * self.entity.review_count - self.score) / (self.entity.review_count - 1)
+      self.entity.review_count -= 1
       self.entity.save!
     end
 end
