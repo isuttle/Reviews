@@ -19,6 +19,7 @@ class ReviewVote < ActiveRecord::Base
   # validations
   validates :user_ref, :presence => true
   validates :review_id, :presence => true
+  validate :ensure_review_is_valid
   
 
   private
@@ -46,5 +47,9 @@ class ReviewVote < ActiveRecord::Base
     
     def ensure_default_values
       self.user_name = "" if self.user_name.nil?
+    end
+    
+    def ensure_review_is_valid
+      return !self.review.nil?
     end
 end

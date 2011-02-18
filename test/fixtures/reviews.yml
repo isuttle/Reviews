@@ -2,7 +2,7 @@
 
 one:
   app_id: 1
-  enity_id: 1
+  entity_id: 1
   user_ref: MyString
   user_name: MyString
   title: MyString
@@ -12,7 +12,7 @@ one:
 
 two:
   app_id: 1
-  enity_id: 1
+  entity_id: 1
   user_ref: MyString
   user_name: MyString
   title: MyString
