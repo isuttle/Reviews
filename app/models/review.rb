@@ -68,7 +68,6 @@ t.timestamps
     
     # updates the entity's score aggregate info to reflect a review being removed    
     def update_entity_scores_after_destroy
-      puts "removing score #{self.score}"
       self.entity.avg_score = ((self.entity.avg_score * self.entity.review_count - self.score) / (self.entity.review_count - 1)).round(2)
       self.entity.review_count -= 1
       self.entity.save!
